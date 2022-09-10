@@ -1,0 +1,20 @@
+{% extends 'accounts/master.html' %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+{% if formset %}
+    {{ formset.management_form }}
+    {% comment %} formset.management_form  to save the data and manage on the form data {% endcomment %}
+    {% for forms in formset %}
+        {{forms}}<hr>
+    {% endfor %}
+{% endif %}
+{% if form %}
+    {{form}}
+{% endif %}
+
+<input type="submit" value="Add Order" class="btn btn-primary">
+</form>
+{% endblock content %}

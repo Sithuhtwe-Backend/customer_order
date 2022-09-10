@@ -1,0 +1,18 @@
+{% extends 'accounts/master.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<h1 class="fa fa-align-center" aria-hidden="true">Customer Profile</h1>
+<form action="" method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% comment %} {{form.as_p}} {% endcomment %}
+    {% for input in form  %}
+            <div class="mb-3">
+                {{input.label}}
+                {{input|add_class:"form-control"}}
+                <div class="text-danger">{{input.errors}}</div>
+            </div>
+        {% endfor %}
+    <input type="submit" class="btn btn-outline-primary" value="UPDATE"></input>
+    <a href="{% url 'customer_profile' %}" class="btn btn-outline-primary">Cancel</a>
+</form>
+{% endblock content %}
